@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023ED51C2E56FC5B00D1E396 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023ED51B2E56FC5B00D1E396 /* DrawView.swift */; };
 		2AEE7232A20C0644A40513F1 /* SpeechHighlightSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42AA9D784B9E233A7F57AC5 /* SpeechHighlightSessionManager.swift */; };
 		2E2BF2EF2B40911DF4BCEDA4 /* RDocumentAnnotationsCacheInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BFF736AADBBF8C2FEBD348 /* RDocumentAnnotationsCacheInfo.swift */; };
 		34319EFF474800EB6BA60376 /* StoreDocumentAnnotationsCacheDbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95656CF4AD91246DF78BDA /* StoreDocumentAnnotationsCacheDbRequest.swift */; };
@@ -1468,6 +1469,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		023ED51B2E56FC5B00D1E396 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		0EE4C604B8B948E2B8820E31 /* ManageAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAccountView.swift; sourceTree = "<group>"; };
 		17E83150004BDA76942E1350 /* RDocumentAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDocumentAnnotation.swift; sourceTree = "<group>"; };
 		1FA2F2A8ADAA23B7B81ADE02 /* SpeechHighlightSessionManagerSpec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpeechHighlightSessionManagerSpec.swift; sourceTree = "<group>"; };
@@ -4465,6 +4467,7 @@
 				B37BF0AA25A5E2AD00AE0268 /* SquareAnnotation.swift */,
 				B3A47C3729015FDD00E7D90D /* TableOfContentsAction.swift */,
 				B3A47C3929015FE800E7D90D /* TableOfContentsState.swift */,
+				023ED51B2E56FC5B00D1E396 /* DrawView.swift */,
 				B36E32E12A66850E00C17B81 /* UnderlineAnnotation.swift */,
 			);
 			path = Models;
@@ -5998,6 +6001,7 @@
 				B3593F1D241A61C700760E20 /* ItemDetailAction.swift in Sources */,
 				B35DD74329813AA6004CC34D /* RemoveItemFromParentDbRequest.swift in Sources */,
 				B34DF1B025768ADF0019CCD1 /* AnnotationPageLabelAction.swift in Sources */,
+				023ED51C2E56FC5B00D1E396 /* DrawView.swift in Sources */,
 				B3593ADC24B60A7600CA0B57 /* UISearchBar+Extensions.swift in Sources */,
 				B305669C23FC051F003304F2 /* RVersions.swift in Sources */,
 				B3DCDF12240914F10039ED0D /* SinglePickerModel.swift in Sources */,

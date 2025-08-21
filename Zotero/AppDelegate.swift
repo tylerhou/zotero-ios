@@ -58,6 +58,17 @@ final class AppDelegate: UIResponder {
         UserDefaults.standard.removeObject(forKey: "ItemsSortType")
     }
 
+    private func migrateDefaultPdfAnnotationTools() {
+        var tools = Defaults.shared.pdfAnnotationTools
+        let missing = Defaults.defaultPdfAnnotationTools.filter({ button in !tools.contains(where: { $0.type == button.type }) })
+
+        // Don't write defaults if the user has never opened the tools panel.
+        guard !missing.isEmpty else { return }
+
+        tools.append(contentsOf: missing)
+        Defaults.shared.pdfAnnotationTools = tools
+    }
+
     private func readAttachmentTypes<Request: DbResponseRequest>(for request: Request, dbStorage: DbStorage, queue: DispatchQueue) throws -> [(String, LibraryIdentifier, Attachment.Kind)] where Request.Response == Results<RItem> {
         var types: [(String, LibraryIdentifier, Attachment.Kind)] = []
 
@@ -250,6 +261,7 @@ extension AppDelegate: UIApplicationDelegate {
         self.migrateActiveColor()
         self.migratePdfSettings()
         self.migrateItemsSortType()
+        self.migrateDefaultPdfAnnotationTools()
 
         let queue = DispatchQueue(label: "org.zotero.AppDelegateMigration", qos: .userInitiated)
         DispatchQueue.main.async {

@@ -569,15 +569,18 @@ class PDFReaderViewController: UIViewController, ReaderViewController, DocumentK
     }
 
     func showToolOptions(sourceItem: UIPopoverPresentationControllerSourceItem) {
-        guard let tool = documentController?.pdfController?.annotationStateManager.state, let toolbarTool = tool.toolbarTool else { return }
+        guard let stateManager = documentController?.pdfController?.annotationStateManager,
+              let tool = stateManager.state,
+              let toolbarTool = AnnotationTool.ofToolAndVariant(tool, stateManager.variant)
+              else { return }
 
         let colorHex = viewModel.state.toolColors[tool]?.hexString
         let size: Float?
-        switch tool {
+        switch toolbarTool {
         case .ink:
             size = Float(viewModel.state.activeLineWidth)
 
-        case .eraser:
+        case .eraser, .strokeEraser:
             size = Float(viewModel.state.activeEraserSize)
 
         case .freeText:
@@ -894,7 +897,9 @@ extension PDFReaderViewController: AnnotationToolbarHandlerDelegate {
 
 extension PDFReaderViewController: AnnotationToolbarDelegate {
     var activeAnnotationTool: AnnotationTool? {
-        return documentController?.pdfController?.annotationStateManager.state?.toolbarTool
+        guard let stateManager = documentController?.pdfController?.annotationStateManager,
+              let tool = stateManager.state else { return nil }
+        return AnnotationTool.ofToolAndVariant(tool, stateManager.variant)
     }
 
     func isCompactSize(for rotation: AnnotationToolbarViewController.Rotation) -> Bool {
@@ -936,9 +941,9 @@ extension PDFReaderViewController: AnnotationToolbarDelegate {
 
     func toggle(tool: AnnotationTool, options: AnnotationToolOptions) {
         readAloudHandler?.confirmActiveHighlightSession()
-        let pspdfkitTool = tool.pspdfkitTool
-        let color = viewModel.state.toolColors[pspdfkitTool]
-        documentController?.toggle(annotationTool: pspdfkitTool, color: color, tappedWithStylus: (options == .stylus))
+        let toolAndVariant = tool.toolAndVariant
+        let color = viewModel.state.toolColors[toolAndVariant.tool]
+        documentController?.toggle(toolAndVariant: toolAndVariant, color: color, tappedWithStylus: (options == .stylus))
     }
 
     var canUndo: Bool {
@@ -999,13 +1004,13 @@ extension PDFReaderViewController: PDFDocumentDelegate {
         variantFrom oldVariant: PSPDFKit.Annotation.Variant?,
         to newVariant: PSPDFKit.Annotation.Variant?
     ) {
-        if let state = oldState?.toolbarTool {
-            annotationToolbarController?.set(selected: false, to: state, color: nil)
+        if let state = oldState, let tool = AnnotationTool.ofToolAndVariant(state, oldVariant) {
+            annotationToolbarController?.set(selected: false, to: tool, color: nil)
         }
 
         if let state = newState {
             let color = viewModel.state.toolColors[state]
-            if let tool = state.toolbarTool {
+            if let tool = AnnotationTool.ofToolAndVariant(state, newVariant) {
                 annotationToolbarController?.set(selected: true, to: tool, color: color)
             }
         }

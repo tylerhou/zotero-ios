@@ -14,6 +14,7 @@ enum AnnotationTool: Hashable, Codable {
     case note
     case highlight
     case eraser
+    case strokeEraser
     case underline
     case freeText
     
@@ -33,7 +34,10 @@ enum AnnotationTool: Hashable, Codable {
             
         case .eraser:
             return Asset.Images.Annotations.eraserLarge.image
-            
+
+        case .strokeEraser:
+            return Asset.Images.Annotations.strokeEraserLarge.image
+
         case .underline:
             return Asset.Images.Annotations.underlineLarge.image
             
@@ -46,7 +50,10 @@ enum AnnotationTool: Hashable, Codable {
         switch self {
         case .eraser:
             return L10n.Pdf.AnnotationToolbar.eraser
-            
+
+        case .strokeEraser:
+            return L10n.Pdf.AnnotationToolbar.strokeEraser
+
         case .freeText:
             return L10n.Pdf.AnnotationToolbar.text
             
@@ -71,7 +78,10 @@ enum AnnotationTool: Hashable, Codable {
         switch self {
         case .eraser:
             return L10n.Accessibility.Pdf.eraserAnnotationTool
-            
+
+        case .strokeEraser:
+            return L10n.Accessibility.Pdf.strokeEraserAnnotationTool
+
         case .freeText:
             return L10n.Accessibility.Pdf.textAnnotationTool
             
@@ -106,7 +116,7 @@ enum AnnotationTool: Hashable, Codable {
         case .highlight:
             return .highlight
 
-        case .eraser:
+        case .eraser, .strokeEraser:
             return nil
 
         case .underline:

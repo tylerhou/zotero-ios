@@ -243,6 +243,7 @@
 "pdf.annotation_share.image.medium" = "Medium";
 "pdf.annotation_share.image.large" = "Large";
 "pdf.annotation_toolbar.eraser" = "Eraser";
+"pdf.annotation_toolbar.stroke_eraser" = "Stroke Eraser";
 "pdf.annotation_toolbar.highlight" = "Highlight";
 "pdf.annotation_toolbar.note" = "Note";
 "pdf.annotation_toolbar.image" = "Image";
@@ -600,6 +601,7 @@
 "accessibility.pdf.underline_annotation_tool" = "Create underline annotation";
 "accessibility.pdf.text_annotation_tool" = "Create text annotation";
 "accessibility.pdf.eraser_annotation_tool" = "Eraser";
+"accessibility.pdf.stroke_eraser_annotation_tool" = "Stroke Eraser";
 "accessibility.pdf.highlight_annotation" = "Highlight annotation";
 "accessibility.pdf.note_annotation" = "Note annotation";
 "accessibility.pdf.image_annotation" = "Image annotation";

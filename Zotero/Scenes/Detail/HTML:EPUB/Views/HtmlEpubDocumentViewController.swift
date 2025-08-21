@@ -202,7 +202,7 @@ class HtmlEpubDocumentViewController: UIViewController {
         case .underline:
             readerType = "underline"
 
-        case .eraser, .image, .ink, .freeText, .note:
+        case .eraser, .strokeEraser, .image, .ink, .freeText, .note:
             return
         }
         // The reader uses `startPosition.start` and `endPosition.end`; the two inner endpoints are unused.
@@ -507,7 +507,7 @@ class HtmlEpubDocumentViewController: UIViewController {
         case .underline:
             toolName = "underline"
 
-        case .eraser, .image, .ink, .freeText:
+        case .eraser, .strokeEraser, .image, .ink, .freeText:
             return
         }
         webViewHandler.call(javascript: "setTool({ type: '\(toolName)', color: '\(color.hexString)' });").subscribe().disposed(by: disposeBag)

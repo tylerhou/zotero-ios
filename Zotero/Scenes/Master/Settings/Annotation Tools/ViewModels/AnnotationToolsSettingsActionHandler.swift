@@ -29,16 +29,8 @@ struct AnnotationToolsSettingsViewModel: ViewModelActionHandler {
             update(viewModel: viewModel) { state in
                 switch section {
                 case .pdf:
-                    state.pdfTools = [
-                        AnnotationToolButton(type: .highlight, isVisible: true),
-                        AnnotationToolButton(type: .underline, isVisible: true),
-                        AnnotationToolButton(type: .note, isVisible: true),
-                        AnnotationToolButton(type: .freeText, isVisible: true),
-                        AnnotationToolButton(type: .image, isVisible: true),
-                        AnnotationToolButton(type: .ink, isVisible: true),
-                        AnnotationToolButton(type: .eraser, isVisible: true)
-                    ]
-                    
+                    state.pdfTools = Defaults.defaultPdfAnnotationTools
+
                 case .htmlEpub:
                     state.htmlEpubTools = [
                         AnnotationToolButton(type: .highlight, isVisible: true),

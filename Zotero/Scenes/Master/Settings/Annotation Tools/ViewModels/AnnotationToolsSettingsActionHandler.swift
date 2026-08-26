@@ -53,9 +53,15 @@ struct AnnotationToolsSettingsViewModel: ViewModelActionHandler {
                 }
             }
 
+        case .setPdfDrawCreateMode(let drawCreateMode):
+            update(viewModel: viewModel) { state in
+                state.pdfDrawCreateMode = drawCreateMode
+            }
+
         case .save:
             Defaults.shared.pdfAnnotationTools = viewModel.state.pdfTools
             Defaults.shared.htmlEpubAnnotationTools = viewModel.state.htmlEpubTools
+            Defaults.shared.pdfReaderAnnotationSettings.drawCreateMode = viewModel.state.pdfDrawCreateMode
         }
     }
 }

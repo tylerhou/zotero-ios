@@ -333,7 +333,11 @@ extension SettingsCoordinator: SettingsCoordinatorDelegate {
     }
     
     func showAnnotationToolsSettings() {
-        let state = AnnotationToolsSettingsState(pdfAnnotationTools: Defaults.shared.pdfAnnotationTools, htmlEpubAnnotationTools: Defaults.shared.htmlEpubAnnotationTools)
+        let state = AnnotationToolsSettingsState(
+            pdfAnnotationTools: Defaults.shared.pdfAnnotationTools,
+            htmlEpubAnnotationTools: Defaults.shared.htmlEpubAnnotationTools,
+            pdfDrawCreateMode: Defaults.shared.pdfReaderAnnotationSettings.drawCreateMode
+        )
         let viewModel = ViewModel(initialState: state, handler: AnnotationToolsSettingsViewModel())
         let view = AnnotationToolsSettingsView().environmentObject(viewModel)
         pushDefaultSize(view: view)

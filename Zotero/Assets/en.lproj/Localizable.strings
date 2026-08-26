@@ -412,6 +412,11 @@
 "settings.annotation_tools.pdf" = "PDF";
 "settings.annotation_tools.html_epub" = "HTML / EPUB";
 "settings.annotation_tools.reset" = "Reset";
+"settings.annotation_tools.ink_strokes.title" = "Ink Strokes";
+"settings.annotation_tools.ink_strokes.separate" = "Separate";
+"settings.annotation_tools.ink_strokes.merge" = "Merge";
+"settings.annotation_tools.ink_strokes.automatic" = "Automatic";
+"settings.annotation_tools.ink_strokes.footer" = "Controls whether consecutive pen strokes are merged into one annotation. Separate strokes can be erased individually but increase document size. \"Automatic\" merges strokes that are drawn close together without too much delay.";
 
 "shareext.save" = "Save to Zotero";
 "shareext.resolve_challenge" = "Resolve Challenge";

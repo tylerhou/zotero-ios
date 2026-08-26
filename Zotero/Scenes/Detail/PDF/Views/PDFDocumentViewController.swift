@@ -720,6 +720,7 @@ final class PDFDocumentViewController: UIViewController {
                 builder.scrubberBarType = .horizontal
                 // builder.thumbnailBarMode = .scrubberBar
                 builder.markupAnnotationMergeBehavior = .never
+                builder.drawCreateMode = Defaults.shared.pdfReaderAnnotationSettings.drawCreateMode
                 builder.freeTextAccessoryViewEnabled = false
                 builder.overrideClass(PSPDFKit.HighlightAnnotation.self, with: HighlightAnnotation.self)
                 builder.overrideClass(PSPDFKit.NoteAnnotation.self, with: NoteAnnotation.self)
@@ -730,7 +731,6 @@ final class PDFDocumentViewController: UIViewController {
                 builder.overrideClass(PSPDFKitUI.FreeTextAnnotationView.self, with: FreeTextAnnotationView.self)
                 builder.propertiesForAnnotations = [.freeText: []]
                 builder.editableAnnotationTypes = AnnotationsConfig.editableAnnotationTypes
-                builder.drawCreateMode = .separate
             }
 
             let controller = PDFViewController(document: document, configuration: pdfConfiguration)

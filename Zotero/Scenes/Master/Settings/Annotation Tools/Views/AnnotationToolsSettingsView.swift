@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+import PSPDFKitUI
+
 struct AnnotationToolsSettingsView: View {
     @EnvironmentObject var viewModel: ViewModel<AnnotationToolsSettingsViewModel>
     @State var section: AnnotationToolsSettingsState.Section = .pdf
@@ -40,6 +42,21 @@ struct AnnotationToolsSettingsView: View {
                     .pickerStyle(.segmented)
                     Spacer()
                         .frame(height: 14)
+                }
+            }
+
+            if section == .pdf {
+                Section {
+                    Picker(
+                        L10n.Settings.AnnotationTools.InkStrokes.title,
+                        selection: .init(get: { viewModel.state.pdfDrawCreateMode }, set: { viewModel.process(action: .setPdfDrawCreateMode($0)) })
+                    ) {
+                        Text(L10n.Settings.AnnotationTools.InkStrokes.separate).tag(DrawCreateMode.separate)
+                        Text(L10n.Settings.AnnotationTools.InkStrokes.merge).tag(DrawCreateMode.mergeIfPossible)
+                        Text(L10n.Settings.AnnotationTools.InkStrokes.automatic).tag(DrawCreateMode.automatic)
+                    }
+                } footer: {
+                    Text(L10n.Settings.AnnotationTools.InkStrokes.footer)
                 }
             }
         }

@@ -149,6 +149,15 @@ final class Defaults {
     )
     var pdfAnnotationTools: [AnnotationToolButton]
 
+    @CodableUserDefault(
+        key: "PDFReaderAnnotationSettings",
+        defaultValue: PDFReaderAnnotationSettings.default,
+        encoder: Defaults.jsonEncoder,
+        decoder: Defaults.jsonDecoder,
+        defaults: .standard
+    )
+    var pdfReaderAnnotationSettings: PDFReaderAnnotationSettings
+
     // MARK: - HTML / Epub Settings
 
     @CodableUserDefault(key: "HtmlEpubReaderSettings", defaultValue: HtmlEpubSettings.default, encoder: Defaults.jsonEncoder, decoder: Defaults.jsonDecoder, defaults: .standard)

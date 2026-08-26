@@ -8,6 +8,8 @@
 
 import UIKit
 
+import PSPDFKitUI
+
 struct AnnotationToolsSettingsState: ViewModelState {
     enum Section: Int {
         case pdf
@@ -16,10 +18,12 @@ struct AnnotationToolsSettingsState: ViewModelState {
 
     var pdfTools: [AnnotationToolButton]
     var htmlEpubTools: [AnnotationToolButton]
+    var pdfDrawCreateMode: DrawCreateMode
 
-    init(pdfAnnotationTools: [AnnotationToolButton], htmlEpubAnnotationTools: [AnnotationToolButton]) {
+    init(pdfAnnotationTools: [AnnotationToolButton], htmlEpubAnnotationTools: [AnnotationToolButton], pdfDrawCreateMode: DrawCreateMode) {
         pdfTools = pdfAnnotationTools
         htmlEpubTools = htmlEpubAnnotationTools
+        self.pdfDrawCreateMode = pdfDrawCreateMode
     }
 
     mutating func cleanup() {
